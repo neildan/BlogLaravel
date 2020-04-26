@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostPost;
 
 class PostController extends Controller
 {
@@ -32,10 +34,12 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @author Daniel Valencia <danielfelipeluis@outlook.com>
      */
-    public function store(Request $request)
+    public function store(StorePostPost $request)
     {
-        echo "Hola mundo";
+        Post::create($request->validated());
+        return back();
     }
 
     /**
