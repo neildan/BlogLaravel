@@ -6,6 +6,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
+use App\Http\Requests\UpdatePostPost;
 
 class PostController extends Controller
 {
@@ -16,7 +17,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        echo "HOla";
+        $posts = Post::orderBy('updated_at', 'desc')->paginate(5);
+
+        return view('dashboard.post.index', ['posts' => $posts]);
     }
 
     /**
@@ -26,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.create');
+        return view('dashboard.post.create', ['post' => new Post()]);
     }
 
     /**
@@ -39,7 +42,7 @@ class PostController extends Controller
     public function store(StorePostPost $request)
     {
         Post::create($request->validated());
-        return back();
+        return back()->with('status', 'Se creo el post correctamente');
     }
 
     /**
@@ -48,9 +51,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('dashboard.post.show', ['post' => $post]);
     }
 
     /**
@@ -59,9 +62,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('dashboard.post.edit', ['post' => $post]);
     }
 
     /**
@@ -71,9 +74,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePostPost $request, Post $post)
     {
-        //
+        $post->update($request->validated());
+        return back()->with('status', 'Se actualizó el post correctamente');
     }
 
     /**
@@ -82,8 +86,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return back()->with('status', 'Se eliminó el post correctamente');
     }
 }

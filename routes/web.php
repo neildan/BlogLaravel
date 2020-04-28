@@ -14,7 +14,9 @@
 // Ejemplo ruta básica
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+/*
 
 // Ejemplo ruta que referencia a otra ruta mediante el nombre
 Route::get('hola/{name}', function ($name) {
@@ -30,6 +32,8 @@ Route::get('sobre-nosotros', function () {
 Route::get('home/{nombre?}/{apellido?}', function($nombre = 'Daniel', $apellido = 'Valencia') {
     return view('home', ['nombre' => $nombre, 'apellido' => $apellido]);
 })->name("home");
+
+*/
 
 // Ejemplo de ruta utilizando controlador
 // Route::get('post', 'PostController@index')->name("postpc");
