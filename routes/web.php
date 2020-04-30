@@ -39,4 +39,10 @@ Route::get('home/{nombre?}/{apellido?}', function($nombre = 'Daniel', $apellido 
 // Route::get('post', 'PostController@index')->name("postpc");
 
 // Ejemplo de ruta resource
+
+// Rutas Post
 Route::resource('dashboard/post', 'dashboard\PostController');
+Route::post('dashboard/post/{post}/image', 'dashboard\PostFileController@uploadImage')->name('post.image');
+
+// Ruta Categoría
+Route::resource('dashboard/category', 'dashboard\CategoryController');

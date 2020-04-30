@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,7 +30,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.create', ['post' => new Post()]);
+        $categories = Category::pluck('id', 'title');
+
+        return view('dashboard.post.create', [
+            'post' => new Post(),
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -64,7 +70,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('dashboard.post.edit', ['post' => $post]);
+        $categories = Category::pluck('id', 'title');
+
+        return view('dashboard.post.edit', [
+            'post' => $post,
+            'categories' => $categories
+        ]);
     }
 
     /**

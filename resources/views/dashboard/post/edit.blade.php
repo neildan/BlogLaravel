@@ -12,5 +12,17 @@
 
 </form>
 
+<form class="mt-2 mb-2" action="{{ route('post.image', $post) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="row">
+        <div class="col">
+            <input class="form-control" type="file" name="image">
+        </div>
+        <div class="col">
+            <input type="submit" class="btn btn-primary" value="subir">
+        </div>
+    </div>
+</form>
+
 @endsection
 
