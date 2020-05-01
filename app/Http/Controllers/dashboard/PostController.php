@@ -12,6 +12,18 @@ use App\Http\Requests\UpdatePostPost;
 class PostController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // Only sirve para especificar los métodos que se tendrán en cuenta.
+        $this->middleware('auth')->only('index');
+        $this->middleware('rol.admin');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

@@ -11,6 +11,16 @@ use App\PostImage;
 class PostFileController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'rol.admin']);
+    }
+
+    /**
      * Subir imagen de un post
      *
      * @param uploadImagePost $request

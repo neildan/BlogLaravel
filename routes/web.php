@@ -46,3 +46,8 @@ Route::post('dashboard/post/{post}/image', 'dashboard\PostFileController@uploadI
 
 // Ruta Categoría
 Route::resource('dashboard/category', 'dashboard\CategoryController');
+Route::resource('dashboard/user', 'dashboard\UserController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
