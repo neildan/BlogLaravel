@@ -11,13 +11,7 @@
 |
 */
 
-// Ejemplo ruta básica
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
 /*
-
 // Ejemplo ruta que referencia a otra ruta mediante el nombre
 Route::get('hola/{name}', function ($name) {
     return "<h1>Hola $name, sobre <a href='".route("postpc")."'>nosotros</a></h1>";
@@ -55,3 +49,5 @@ Auth::routes();
 
 // Ruta Home
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'web\WebController@index')->name('index');

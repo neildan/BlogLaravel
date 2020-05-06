@@ -5,22 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href='{{ asset("css/app.css") }}'>
+    <link rel="stylesheet" href='{{ asset("css/styles.css") }}'>
     <title>Dashboard</title>
 </head>
 
 <body>
 
-    @include('dashboard.partials.nav-header-main')
-
-    <div class="container mt-2">
-
-        @include('dashboard.partials.validation-success')
+    <div class="container mt-2" id="app">
 
         @yield('content')
 
     </div>
 
     <script src='{{ asset("js/app.js") }}'></script>
+    <script src='{{ asset("js/script.js") }}'></script>
 </body>
 
 </html>

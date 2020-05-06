@@ -1,0 +1,25 @@
+/* Tipografía contenido */
+
+@font-face {
+    font-family: 'Mithella-Regular';
+    src: url('../fonts/Mithella-Regular.otf');
+}
+
+/* Tipografía titulo */
+
+@font-face {
+    font-family: 'Friendly-Schoolmates';
+    src: url('../fonts/Friendly-Schoolmates.otf');
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Friendly-Schoolmates';
+    font-size: 3em;
+    color: #212529;
+}
+
+body {
+    font-family: 'Mithella-Regular';
+    font-size: 1em;
+    color: #212529;
+}
