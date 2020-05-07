@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use App\Traits\ApiResponse;
+use Illuminate\Http\Exceptions\PostTooLargeException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -54,8 +55,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if(env('APP_ENV') == 'local'){
-            return parent::render($request, $exception);
+        //dd($exception);
+        //if(env('APP_ENV') == 'local'){
+        //    return parent::render($request, $exception);
+        //}
+
+        if($exception instanceof PostTooLargeException){
+            return $this->errorResponse("Archivo demasiado pesado", null, '404', $exception->getMessage());
         }
 
         if($exception instanceof ModelNotFoundException){

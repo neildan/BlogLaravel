@@ -1,3 +1,3 @@
 $(document).ready(function(){
-    console.log("Ya cargue todo el DOM")
+    console.log("[script.js] Se carga HTML y VUE")
 })

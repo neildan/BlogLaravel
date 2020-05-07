@@ -6,13 +6,13 @@
 
 require("./bootstrap");
 
-window.Vue = require("vue");
+import router from "./assets/router.js";
 
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 ClassicEditor.create(document.querySelector("#content"))
-    .then((editor) => {})
-    .catch((error) => {});
+    .then(editor => {})
+    .catch(error => {});
 
 /**
  * The following block of code msay be used to automatically register your
@@ -39,13 +39,20 @@ ClassicEditor.create(document.querySelector("#content"))
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Vue.component(
+//     "post-list",
+//     require("./components/PostListComponent.vue").default
+// );
+
 Vue.component(
-    "list-posts",
-    require("./components/PostListComponent.vue").default
+    "post-modal",
+    require("./components/PostModalComponent.vue").default
 );
 
 const app = new Vue({
     el: "#app",
-    data: {
-    },
+    router,
+    mounted: function() {
+        console.log("[app.js] Se carga VUE");
+    }
 });
