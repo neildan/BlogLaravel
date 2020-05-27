@@ -2,7 +2,7 @@
 
 <div class="form-group">
     <label for="title">Titulo</label>
-<input class="form-control" type="text" name="title" id="title" value="{{ old('title', $post->title) }}">
+    <input class="form-control" type="text" name="title" id="title" value="{{ old('title', $post->title) }}">
 </div>
 
 <div class="form-group">
@@ -14,9 +14,9 @@
     <label for="category_id">Categoría</label>
     <select class="form-control" name="category_id" id="category_id">
         @forelse($categories as $title => $id)
-            <option {{ $post->category_id == $id ? 'selected="selected"' : '' }} value="{{ $id }}">{{ $title }}</option>
+        <option {{ $post->category_id == $id ? 'selected="selected"' : '' }} value="{{ $id }}">{{ $title }}</option>
         @empty
-            <option value="0" disabled>No hay categorías</option>
+        <option value="0" disabled>No hay categorías</option>
         @endforelse
     </select>
 </div>

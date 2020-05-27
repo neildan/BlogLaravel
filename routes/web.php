@@ -51,3 +51,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'web\WebController@index')->name('index');
+Route::get('/detail/{id}', 'web\WebController@detail')->name('detail');
+Route::get('/post-category/{category_id}', 'web\WebController@post_category')->name('post-category');

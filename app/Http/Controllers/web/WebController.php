@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
@@ -14,6 +13,16 @@ class WebController extends Controller
      * @author Daniel Valencia <2020-05-05>
      */
     public function index()
+    {
+        return view("web.index");
+    }
+
+    public function detail()
+    {
+        return view("web.index");
+    }
+
+    public function post_category()
     {
         return view("web.index");
     }

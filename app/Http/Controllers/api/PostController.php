@@ -15,15 +15,16 @@ class PostController extends ApiResponseController
     public function index()
     {
         $posts = Post::
-            join('categories', 'posts.category_id', 'categories.id')->
-            join('post_images as imgs','imgs.post_id', '=', 'posts.id')->
             select(
                 'posts.id',
                 'posts.title',
-                'categories.title as category',
+                'posts.content',
                 'posts.updated_at',
                 'imgs.image',
+                'categories.title as category',
             )->
+            join('categories', 'posts.category_id', 'categories.id')->
+            join('post_images as imgs','imgs.post_id', '=', 'posts.id')->
             orderBy('posts.updated_at', 'desc')->paginate(10);
 
         return $this->successResponse(null, $posts);
